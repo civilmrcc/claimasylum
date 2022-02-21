@@ -26,8 +26,6 @@ git push -uf origin main
 
 ## Collaborate with your team
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
 - [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
 - [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
 - [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
@@ -44,24 +42,14 @@ Use the built-in continuous integration in GitLab.
 
 ***
 
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
 ## Suggestions for a good README
 Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
-## Name
-Choose a self-explaining name for your project.
-
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Nach EU-Recht dürfen Menschen auf der Flucht bei ihrer Erstankunft in Europa einen Asylantrag stellen. Erst wenn dieser negativ ausfällt, dürfen diese aus Europa ausgewiesen werden. Die erschreckende Realität ist aber, dass Flüchtende immer wieder illegal und brutal aus europäischem Grenzgebiet vertrieben werden, etwa aus Polen nach Belarus oder aus Griechenland in die Türkei, ohne zuvor einen Asylantrag stellen zu können (Stichwort: Illegal Push-Backs). Mithilfe unserer WebApp können Flüchtende Menschen noch auf der Flucht, direkt nach Betreten europäischen Bodens, einen Asylantrag stellen, und somit ihr Recht auf Asyl wahrnehmen, bevor sie ausgewiesen werden. Dazu werden über ein Formular die nötigen Antragstexte generiert, an die zuständigen Behörden versandt und zusätzlich über das Speichern der Geolocation der eventuell benötigte Nachweis erbracht, dass die Person auch tatsächlich in Europa war.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Das Projekt schafft über diesen konkreten Usecase hinaus ein Framework zum einfachen Abstrahieren formaljuristischer Vorgänge und ermöglicht damit, behördliche Anträge jeglicher Art zu generieren. Dadurch unterwandert diese WebApp die Komplikationen beim Stellen von Anträgen bei Behörden (wie beispielsweise Sprachbarrieren) und erleichtert Menschen, ihre Rechte nicht nur zu kennen, sondern auch wahrzunehmen.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
 ## Installation
 Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
@@ -76,11 +64,56 @@ Tell people where they can go to for help. It can be any combination of an issue
 If you have ideas for releases in the future, it is a good idea to list them in the README.
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+We would love for you to contribute to claimasylum and help make it even better than it is today! As a contributor, here are the guidelines we would like you to follow:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Issue Reporting Guidelines](#issue-reporting-guidelines)
+- [Pull Request Guidelines](#pull-request-guidelines)
+- [Code Review Guidelines](#code-review-guidelines)
+
+### Issue Reporting Guidelines
+
+Please report all issues in the [issue page](https://gitlab.com/mareikei/claimasylum/issues). There make sure that the bug or feature was not already reported, or please link dublicated cards together.
+
+Write detailed information because it is very helpful to understand an issue. For example:
+
+- How to reproduce the issue, step-by-step.
+- The expected behavior.
+- What is actually happening (or what is wrong)?
+- The operating system.
+- Screenshots always help a lot.
+
+### Pull Request Guidelines
+
+The main branch is just a snapshot of the latest stable release. All development should be done in dedicated branches. Do not submit (Pull Requests) PRs against the main branch.
+Checkout a topic branch from the develop branch and merge on gitlab.
+Overview of Branches:
+
+- main (release branch)
+- develop (latest development branch)
+
+**Naming of topic branch**
+`[ISSUENUMBER]-[FEATURENAME]`
+  example feature branch:
+`19-left_navigation_update_on_change`
+
+Explanation:
+If the issuenumber is added in the beginning follow by a hyphen it automatically appears in the corresponding gitlab issue. This makes it easier to track branches.
+
+### Code Review Guidelines
+
+When reviewing a merge request it is asked to mark the comments priority. We chose to use emojis to represent the following:
+
+:apple: : "must be fixed"
+:orange_book:: "personal taste, but should probably be fixed"
+:green_apple: : "style questions, white spaces, etc"
+
+Gitlab text replacements for these emojis:
+
+:apple:  `:apple:`
+:orange_book:    `:orange_book:`
+:green_apple:    `:green_apple:`
 
 ## Authors and acknowledgment
 Show your appreciation to those who have contributed to the project.
