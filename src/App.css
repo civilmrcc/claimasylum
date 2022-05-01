@@ -1,0 +1,150 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.theme {
+  color: #1976d2 !important;
+}
+
+.userPage {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer__inner {
+  width: 100%;
+  height: 3rem;
+  background-color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.flexed {
+  display: flex !important;
+  align-items: center;
+  cursor: pointer;
+}
+
+button {
+  text-decoration: none;
+}
+
+.linkBtn {
+  width: 200px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: #1976d2;
+  height: 2.5rem;
+  color: white;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 2rem;
+  height: 2rem;
+}
+
+i {
+}
+
+.userPage__home {
+  width: 100%;
+  padding: 1rem 5%;
+}
+
+.userPage__home i {
+  color: #1976d2;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.centerContent {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.signature__box {
+  width: 100%;
+  aspect-ratio: 3/1.5;
+  border: 1px solid #1976d2;
+  border-radius: 0.5rem;
+}
+
+.signatureCanvas {
+  width: 100%;
+  height: 100%;
+  cursor: url("./assets/pen.ico"), default !important;
+}
+
+.signature__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signature__buttons__icons {
+  width: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.signature__buttons i {
+  margin-top: 1rem;
+  color: #1976d2;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.userData {
+  width: 100%;
+}
+
+.userData__item{
+  display: flex;
+  width: 100%;
+}
+
+.userData__item:not(:first-child){
+  margin-top: 1rem;
+}
+
+.userData__content{
+  margin-left: 1rem;
+}
+
+.map_container{
+  /* width: 25rem; */
+}
+
+.userData__signature{
+  padding: 0 0;
+  margin-bottom: 4rem;
+}
