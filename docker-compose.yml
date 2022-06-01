@@ -1,8 +1,13 @@
 version: '3.7'
 
 services:
+<<<<<<< HEAD
   frontend:
     container_name: claim.frontend
+=======
+  app:
+    container_name: claim.app
+>>>>>>> a8baae6 (docker compose added)
     #entrypoint: ['npm', '--prefix', '/onefleet', 'run', 'dev']
     ports:
       - '8080:8080'
@@ -12,10 +17,19 @@ services:
     volumes:
         - ./build:/claimasyl/build
     build:
+<<<<<<< HEAD
       context: frontend
   webserver:
+=======
+      context: .
+  client:
+>>>>>>> a8baae6 (docker compose added)
     image: nginx
     ports:
         - 8000:80
     volumes:
+<<<<<<< HEAD
         - ./frontend/build:/usr/share/nginx/html
+=======
+        - ./build:/usr/share/nginx/html
+>>>>>>> a8baae6 (docker compose added)
