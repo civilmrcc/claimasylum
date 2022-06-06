@@ -432,6 +432,37 @@ export default function UserForm() {
           </Grid>
 
           <Grid container {...outerGridStyle}>
+            <FormControl
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
+              <FormLabel id="demo-row-radio-buttons-group-label">
+                {t('Is geolocation correct?')}
+              </FormLabel>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="geolocationCorrect"
+                onChange={(e) => handleChange(e)}
+                style={{ marginLeft: "1.5rem" }}
+              >
+                <FormControlLabel
+                  value="yes"
+                  control={<Radio />}
+                  label={t('Yes')}
+                  style={{ padding: 0 }}
+                />
+                <FormControlLabel value="no" control={<Radio />} label={t('No')} />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
+
+          <Grid container {...outerGridStyle}>
             <Grid item sm={12} lg={12}>
 
             </Grid>

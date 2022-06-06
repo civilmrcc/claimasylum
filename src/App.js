@@ -12,6 +12,9 @@ function App() {
     <>
       <Router history={history}>
         <Switch>
+        useEffect(() = {
+        document.title = "Claimasylum"
+           }, [])
           <Route exact path="/" component={UserForm} />
           <Route exact path="/accessdata" component={AccessData} />
           <Route exact path="/contact" component={Contact} />
@@ -23,3 +26,4 @@ function App() {
 }
 
 export default App;
+
