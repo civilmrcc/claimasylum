@@ -4,16 +4,36 @@ services:
   frontend:
     container_name: claim.frontend
     #entrypoint: ['npm', '--prefix', '/onefleet', 'run', 'dev']
-    ports:
-      - '8080:8080'
     volumes:
         - ./build:/claimasyl/build
     build:
       context: frontend
-  webserver:
-    context: 
+  nginx:
+    build: nginx
     image: nginx
     ports:
-        - 8000:80
+        - 8080:8080
     volumes:
+        - ./nginx/logs:/usr/local/var/log/nginx/
         - ./frontend/build:/usr/share/nginx/html
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    build: ./backend
+    command: bash /code/docker-entrypoint.sh
+    volumes:
+      - ./backend/:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
