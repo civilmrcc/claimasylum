@@ -5,7 +5,8 @@ import { API_URL } from "../helpers/variables";
 const useData = () => {
   const sendFormData = async (data) => {
     try {
-      const response = await axios.post(`${API_URL}/userdata`, data);
+      const response = await axios.post(`${API_URL}/application/`, data);
+      console.log(231);
       console.log(response.data);
     } catch (err) {
       console.log(err);
