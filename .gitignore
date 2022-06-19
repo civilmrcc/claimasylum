@@ -11,6 +11,10 @@ frontend/node_modules
 # production
 frontend/build
 /build
+
+#logs
+nginx/logs/*.log
+
 # misc
 .DS_Store
 .env.local
