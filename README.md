@@ -25,9 +25,9 @@ docker-compose up
 We would love for you to contribute to claimasylum and help make it even better than it is today! As a contributor, here are the guidelines we would like you to follow:
 
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
-- [Issue Reporting Guidelines](./docu/issue-reporting-guidelines.md)
-- [Pull Request Guidelines](./docu/pull-request-guideline.md)
-- [Code Review Guidelines](./docu/code-review-guidelines.md)
+- [Issue Reporting Guidelines](./docu/contributing/issue-reporting-guidelines.md)
+- [Pull Request Guidelines](./docu/contributing/pull-request-guideline.md)
+- [Code Review Guidelines](./docu/contributing/code-review-guidelines.md)
 
 
 ## To Do
