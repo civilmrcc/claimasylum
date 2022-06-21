@@ -3,9 +3,9 @@ version: '3.7'
 services:
   frontend:
     container_name: claim.frontend
-    #entrypoint: ['npm', '--prefix', '/onefleet', 'run', 'dev']
+    entrypoint: ['npm', '--prefix', '/onefleet', 'run', 'build']
     volumes:
-        - ./build:/claimasyl/build
+        - ./frontend/build:/claimasyl/build
     build:
       context: frontend
   nginx:
