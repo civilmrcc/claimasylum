@@ -17,7 +17,7 @@ Currently we use docker-compose to deploy and develop the application. The repo 
 
 ```
 git clone git@gitlab.com:Mareikei/claimasylum.git
-docker-compose up
+podman-compose --env-file .env up
 ```
 
 
