@@ -1,2 +1,4 @@
-FROM alpine:latest
-RUN apk add gpg
+FROM nginx:alpine
+
+COPY nginx.conf /etc/nginx/nginx.conf
+RUN apk update && apk add bash

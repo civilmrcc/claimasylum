@@ -8,13 +8,6 @@ services:
         - ./frontend/build:/claimasyl/build
     build:
       context: frontend
-  nginx:
-    build: nginx
-    ports:
-        - 8080:8080
-    volumes:
-        - ./nginx/logs:/usr/local/var/log/nginx/
-        - ./frontend/build:/usr/share/nginx/html
   database:
     image: postgres
 #    volumes:
@@ -23,21 +16,13 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-  keys:
-    build:
-      context: keys
-
-    command: sh /code/docker-entrypoint.sh
-    volumes:
-      - ./keys/private:/code/privatekeys
-      - ./keys/public:/code/publickeys
   backend:
     build: ./backend
     command: bash /code/docker-entrypoint.sh
     volumes:
       - ./backend/:/code
-      - ./keys/private:/code/privatekeys
-      - ./keys/public:/code/publickeys
+      - ./keys/private/:/code/privatekeys/
+      - ./keys/public/:/code/publickeys/
     ports:
       - "8000:8000"
     environment:
@@ -52,3 +37,18 @@ services:
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
     depends_on:
       - database
+  keys:
+    build:
+      context: keys
+
+    command: sh /code/docker-entrypoint.sh
+    volumes:
+      - ./keys/private:/code/privatekeys
+      - ./keys/public:/code/publickeys
+  nginx:
+    build: nginx
+    ports:
+        - 8080:8080
+    volumes:
+        - ./nginx/logs:/usr/local/var/log/nginx/
+        - ./frontend/build:/usr/share/nginx/html
