@@ -8,14 +8,6 @@ services:
         - ./frontend/build:/claimasyl/build
     build:
       context: frontend
-  database:
-    image: postgres
-#    volumes:
-#      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   backend:
     build: ./backend
     command: bash /code/docker-entrypoint.sh
@@ -52,3 +44,5 @@ services:
     volumes:
         - ./nginx/logs:/usr/local/var/log/nginx/
         - ./frontend/build:/usr/share/nginx/html
+    depends_on:
+      - backend
