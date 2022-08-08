@@ -27,8 +27,6 @@ services:
       - EMAIL_PORT=${EMAIL_PORT}
       - EMAIL_USE_TLS=${EMAIL_USE_TLS}
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
-    depends_on:
-      - database
   keys:
     build:
       context: keys
