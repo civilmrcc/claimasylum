@@ -24,6 +24,5 @@ def index(request):
         [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)],
         fail_silently=False,
     )
-    print(getattr(settings, "EMAIL_FROM_MAIL", None),getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None))
     print("Mail sent.")
     return HttpResponse(200)
