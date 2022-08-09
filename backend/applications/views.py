@@ -10,22 +10,22 @@ def index(request):
     #get formdata
     formdata = json.loads(request.body)['formdata']
 
-    pub_key, _ = pgpy.PGPKey.from_file(str('/code/publickeys/public.asc'))
-    priv_key, _ = pgpy.PGPKey.from_file(str('/code/privatekeys/private.pgp'))
+    pub_key, _ = pgpy.PGPKey.from_file(str('/code/publickeys/worker.asc'))
+    priv_key, _ = pgpy.PGPKey.from_file(str('/code/privatekeys/server.pgp'))
    
     # Encrypt string
     txt_msg = pgpy.PGPMessage.new(json.dumps(formdata))
     encrypted_txt_msg = pub_key.encrypt(txt_msg)
     # from pgpy documentation:
     # the bitwise OR operator '|' is used to add a signature to a PGPMessage.
-    signature = priv_key.sign(encrypted_txt_msg)
+    encrypted_txt_msg |= priv_key.sign(encrypted_txt_msg)
 
     #EMAIL_HOST_USER
     send_mail(
         'New Request submitted',
-        str(encrypted_txt_msg)+'\n'+str(signature),
+        str(encrypted_txt_msg),
         getattr(settings, "EMAIL_FROM_MAIL", None),
-        [getattr(settings, "EMAIL_FROM_MAIL", None)],
+        [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)],
         fail_silently=False,
     )
     print("Mail sent.")
