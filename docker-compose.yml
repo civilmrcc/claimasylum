@@ -43,3 +43,22 @@ services:
         - ./frontend/build:/usr/share/nginx/html
     depends_on:
       - backend
+  worker:
+    build:
+      context: worker
+    command: python /code/worker.py
+    volumes:
+      - ./worker/:/code
+      - ./keys/private/:/code/privatekeys/
+      - ./keys/public/:/code/publickeys/
+      - ./worker/pdfs/:/code/pdfs/
+    environment:
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_FROM_MAIL=${EMAIL_FROM_MAIL}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_USE_TLS=${EMAIL_USE_TLS}
+      - EMAIL_USE_SSL=${EMAIL_USE_SSL}
+      - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
+      
