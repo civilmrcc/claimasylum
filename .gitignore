@@ -19,6 +19,9 @@ nginx/logs/*.log
 keys/private/*
 keys/public/*
 
+#worker
+worker/pdf/*
+
 # misc
 .env
 .DS_Store
