@@ -2,3 +2,4 @@ Django>=3.0,<4.0
 psycopg2>=2.8
 django-cors-headers>=3.13.0
 PGPy>=0.5.4
+graypy>=1.2
