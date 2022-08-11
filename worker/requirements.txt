@@ -1,3 +1,4 @@
 PGPy>=0.5.4
 imap_tools>=0.56.0
 fpdf>=1.7.2
+graypy>=1.2
