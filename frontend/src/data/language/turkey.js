@@ -1,4 +1,4 @@
-const persian = {
+const turkish = {
     "Claimasylum.eu":"Claimasylum.eu",
     "Apply":"Apply",
     "Apply asylum?": "Do you want to submit a wish for asylum?",
@@ -47,4 +47,4 @@ const persian = {
 }
 
 
-export default persian;
+export default turkish;

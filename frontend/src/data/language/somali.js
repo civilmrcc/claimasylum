@@ -1,7 +1,7 @@
-const persian = {
+const french = {
     "Claimasylum.eu":"Claimasylum.eu",
     "Apply":"Apply",
-    "Apply asylum?": "Do you want to submit a wish for asylum?",
+    "Apply asylum?": "",
     "Name": "Name",
     "Email": "E-Mail",
     "Yes": "Yes",
@@ -34,7 +34,7 @@ const persian = {
     "access_data":"Access Data",
     "last_name":"Surname",
     "Image":"Image",
-    "languageDescription":"Claimasylum.eu - Exercise your right, apply for asylum\n\nWith claimasylum.eu you can submit an wish for asylum to an authority. You can enter your personal data in the form under 'Submit an application'. In addition, we will try to prove that you are on the territory of the EU at the time of the wish by taking a photo of you and your geolocation.",
+    "languageDescription":"Claimasylum.eu – Isticmaal Xaqaaqa, Dalbo megangaly.\n\nAdigoo isticmaalaya claimasylum.eu waxaad rabitaan megangalyo ugudbin kartaa madaxda. Waxaad gelin kartaa Xogtaada shakhsiyadeed foomka hoose halka ay kuqoran tahay       ‘Submit an application’ ‘Gudbi dalab’ intaa waxaa sii dheer waxaan isku dayi doonaa inaan cadeyno inaad kusugan tahay dhulka midowga Yurub waqtiga aad rabitaanka soo gudbisey iyadoo laqaadayo sawiraada iyo goobta aad markaa kusugan tahay.",
     "upload file":"upload file",
     "Email info":"Enter your email address if you have one. This helps us a lot to keep in contact with you",
     "Phone info":"Enter your phone number with dialing code here. If possible use a phone number that is permanent number so we can use it as a way of contacting you",
@@ -47,4 +47,4 @@ const persian = {
 }
 
 
-export default persian;
+export default french;

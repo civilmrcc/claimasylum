@@ -8,6 +8,7 @@ const Contact = () => {
   return (
     <UserPage>
       <h1 className="centerText theme">{ t('Contact') }</h1>
+      <p className="centerText theme">{ t('ContactValue') }</p>
     </UserPage>
   );
 };

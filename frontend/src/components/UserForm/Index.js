@@ -9,11 +9,11 @@ import { FormLabel, TextField, Box, Typography } from "@mui/material";
 import useData from "../../hooks/useData";
 import { USER_DATA_KEY } from "../../helpers/variables";
 import SignaturePad from "react-signature-canvas";
-
-
-//map import 
+import Checkbox from '@mui/material/Checkbox';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import InfoIcon from '@mui/icons-material/Info';
 import Map from '../OpenstreetMap/Index';
-
+import { Link } from "react-router-dom";
 
 import { useTranslation } from 'react-i18next';
 
@@ -48,6 +48,10 @@ export default function UserForm() {
   });
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
+  const [privacy, setPrivacy] = useState(false);
+
+  const [captcha, setCaptch] = useState('');
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
   const onSelectFile = e => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -93,6 +97,7 @@ export default function UserForm() {
   const sigCanvas = useRef({});
 
   useEffect(() => {
+    loadCaptchaEnginge(6); 
     navigator.geolocation.getCurrentPosition(function (position) {
       locationInfo.location.lat = position.coords.latitude;
       locationInfo.location.lng = position.coords.longitude;
@@ -125,10 +130,6 @@ export default function UserForm() {
     console.log(e.target.files[0]);
   }
 
-  function handleLang(e) {
-    i18n.changeLanguage(e.target.value);
-    localStorage.setItem('language', e.target.value);
-  }
 
   async function submitForm() {
 
@@ -208,6 +209,15 @@ export default function UserForm() {
 
   const language = localStorage.getItem('language');
 
+  const onSubmitCaptcha = () => {
+    if(validateCaptcha(captcha) === true) {
+      setIsCaptchaValid(true);
+    } 
+    else {
+      alert('Captcha Does Not Match');
+      setIsCaptchaValid(false);
+    }
+  }
 
   return (
 
@@ -227,45 +237,7 @@ export default function UserForm() {
           padding="0 5%"
         >
 
-          <FormControl style={{ width: "100%" }}>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-              onChange={(e) => handleLang(e)}
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <FormControlLabel
-                value='en'
-                control={<Radio />}
-                label="English"
-                checked={language == 'en' ? true : false}
-
-              />
-              <FormControlLabel
-                value='ger'
-                control={<Radio />}
-                label="German"
-                checked={language == 'ger' ? true : false}
-              />
-              <FormControlLabel
-                value='fa'
-                control={<Radio />}
-                label="Persian"
-                checked={language == 'fa' ? true : false}
-              />
-              <FormControlLabel
-                value='ar'
-                control={<Radio />}
-                label="Arabic"
-                checked={language == 'ar' ? true : false}
-              />
-
-
-
-            </RadioGroup>
-          </FormControl>
-
+         
         </Grid>
 
         <Grid
@@ -282,8 +254,8 @@ export default function UserForm() {
           padding="0 5%"
         >
           <Grid item>
-            <Typography variant="p" component="p" sx={{ width: "100%" }}>
-              {t('languageDescription')}
+            <Typography variant="h6" component="h2" sx={{ width: "100%", marginTop: "2em", marginBottom: "2em", marginTop: "2em", textAlign: "center" }}>
+            {t('languageDescription')}
             </Typography>
           </Grid>
         </Grid>
@@ -339,11 +311,12 @@ export default function UserForm() {
           </Grid>
 
           <Grid item {...inputConStyle}>
+            
+            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Name')} </Typography>
             <TextField
               value={form.name}
               type="text"
               name="name"
-              label={t('Name')}
               id=""
               sx={{ width: "100%" }}
               onChange={(e) => handleChange(e)}
@@ -351,11 +324,11 @@ export default function UserForm() {
             />
           </Grid>
           <Grid item {...inputConStyle}>
+            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Email')} <span title={t("Email info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
             <TextField
               value={form.email}
               type="email"
               name="email"
-              label={t('Email')}
               id=""
               sx={{ width: "100%" }}
               onChange={(e) => handleChange(e)}
@@ -363,11 +336,11 @@ export default function UserForm() {
             />
           </Grid>
           <Grid item {...inputConStyle}>
+            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Date Of Birth')} </Typography>
             <TextField
               value={form.dob}
               type="date"
               name="dob"
-              label={t("Date Of Birth")}
               id=""
               focused
               sx={{ width: "100%" }}
@@ -376,11 +349,11 @@ export default function UserForm() {
             />
           </Grid>
           <Grid item {...inputConStyle}>
+            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Place of Birth')} </Typography>
             <TextField
               value={form.placeOfBirth}
               type="text"
               name="placeOfBirth"
-              label={t('Place of Birth')}
               id=""
               sx={{ width: "100%" }}
               onChange={(e) => handleChange(e)}
@@ -388,11 +361,11 @@ export default function UserForm() {
             />
           </Grid>
           <Grid item {...inputConStyle}>
+            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Phone No')} <span title={t("Phone info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
             <TextField
               value={form.phone}
               type="text"
               name="phone"
-              label={t('Phone No')}
               id=""
               sx={{ width: "100%" }}
               onChange={(e) => handleChange(e)}
@@ -410,9 +383,13 @@ export default function UserForm() {
                 justifyContent: "space-between",
               }}
             >
-              <FormLabel id="demo-row-radio-buttons-group-label">
-                {t('Are you underage?')}
-              </FormLabel>
+              <div style={{display: "flex", justifyContent: "center"  }}>
+                <FormLabel id="demo-row-radio-buttons-group-label">
+                  {t('Are you underage?')}
+                </FormLabel>
+                <span title={t("Are you a minor")}><InfoIcon sx={{ fontSize: 16, marginLeft: '4px', color: '#6a6a6a' }} /></span>
+              </div>
+                
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
@@ -441,9 +418,13 @@ export default function UserForm() {
                 justifyContent: "space-between",
               }}
             >
-              <FormLabel id="demo-row-radio-buttons-group-label">
-                {t('Is geolocation correct?')}
-              </FormLabel>
+              <div style={{display: "flex", justifyContent: "center"  }}>
+                <FormLabel id="demo-row-radio-buttons-group-label">
+                  {t('Is geolocation correct?')}
+                </FormLabel>
+                <span title={t("Geolocation")}><InfoIcon sx={{ fontSize: 16, marginLeft: '4px', color: '#6a6a6a' }} /></span>
+              </div>
+             
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
@@ -477,11 +458,11 @@ export default function UserForm() {
 
           <Grid item {...inputConStyle}>
             <div>
+              <div><p>{t('TextPhoto')}</p></div>
               <div style={{display:'inline-block',width:'20%'}}>
                 <Button
-                  style={{ width: '100%' }}
+                  style={{ width: '100%', backgroundColor: '#ec5e2a' }}
                   variant="contained"
-                  color="primary"
                   onClick={() => fileInput.current.click()}
                 >
                   {t('upload file')}
@@ -497,6 +478,8 @@ export default function UserForm() {
                   required
                 />
               </div>
+              <Grid>
+          </Grid>
               <div style={{ display: "inline-block", float: "right", width: "50%", textAlign: "center" }}>
                 {selectedFile && <img style={{ height: "200px", borderRadius: "5px" }} src={preview} />}
               </div>
@@ -509,7 +492,7 @@ export default function UserForm() {
 
 
 
-          <Grid {...outerGridStyle} marginTop='1rem' className='descCont'>
+          {/* <Grid {...outerGridStyle} marginTop='1rem' className='descCont'>
             <div className="flexed" onClick={() => setVulOpen((pS) => !pS)}>
               <h3 className="theme">{t('Vulnerablities')}</h3>
               <i
@@ -564,10 +547,10 @@ export default function UserForm() {
               quos molestiae delectus voluptates.
               </p>
             )}
-          </Grid>
+          </Grid> */}
 
           <Grid item {...inputConStyle}>
-            <h4 className="theme">{t('Sign bellow(Draw)')}</h4>
+            <h4 className="theme" style={{display: "flex", alignItems : "center"}} >{t('Sign bellow(Draw)')}  <span title={t("Signature")}><InfoIcon sx={{ fontSize: 16, marginLeft: '3px', marginTop: '4px' }} /></span></h4>
             <div className="signature__box">
               <SignaturePad
                 ref={sigCanvas}
@@ -584,24 +567,43 @@ export default function UserForm() {
             </div>
           </Grid>
           <Grid item {...inputConStyle}>
+            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Passwort (Not mandatory)')} <span title={t("Pass info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
             <TextField
               value={form.passwort}
               type="text"
               name="passwort"
-              label={t('Passwort (Not mandatory)')}
               id=""
               sx={{ width: "100%" }}
               onChange={(e) => handleChange(e)}
               required
             />
           </Grid>
-
-
+            
+            <div>
+              <a href='/impressum'>{t('Privacy')}</a> <Checkbox checked={privacy} onChange={ (e) => setPrivacy(e.target.checked) } inputProps={{'aria-label': 'Checkbox demo'}} />
+            </div>
+            <div className="captcha">
+              <LoadCanvasTemplateNoReload  onChange={(val) => console.log(val)} />
+              <input type="text" value={captcha} onChange={(e) => setCaptch(e.target.value)} />
+              <Button
+                  style={{ width: '100%', backgroundColor: '#ec5e2a' }}
+                  variant="contained"
+                  onClick={onSubmitCaptcha}
+                >
+                  {t('Send captcha')}
+                </Button>
+            </div>
+            <Grid item>
+            <Typography variant="p" component="p" sx={{ width: "100%", textAlign: "center" }}>
+            {t('SubmitText')}
+            </Typography>
+          </Grid>
           <Button
             variant="outlined"
-            sx={{ width: "200px", m: "10px" }}
+            sx={{ width: "200px", m: "10px",  }}
             onClick={submitForm}
             color="primary"
+            disabled={!privacy || !isCaptchaValid}
           >
             {t('Submit')}
           </Button>
@@ -610,7 +612,7 @@ export default function UserForm() {
       </div>
 
 
-      <div id="info" style={{ marginBottom: "5rem" }}>
+      <div id="info" style={{ marginBottom: "1rem" }}>
         <Grid
           container
           direction="column"
@@ -633,6 +635,30 @@ export default function UserForm() {
           </Grid>
         </Grid>
       </div>
+      <div id="info" style={{ marginBottom: "15rem" }}>
+        <Grid
+          container
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ mt: "5ch" }}
+        >
+          <Grid item {...inputConStyle}>
+            <Typography
+              variant="h2"
+              component="h2"
+              style={{ fontWeight: "bold", fontSize: "25px" }}
+              className="theme"
+            >
+              {t('Further Support')}
+            </Typography>
+          </Grid>
+          <Grid item {...inputConStyle}>
+            {t('FurtherSupportText')}      
+          </Grid>
+        </Grid>
+      </div>
+      
     </UserPage>
   );
 }
