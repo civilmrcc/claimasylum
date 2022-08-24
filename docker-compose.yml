@@ -75,6 +75,8 @@ services:
   # MongoDB: https://hub.docker.com/_/mongo/
   mongo:
     image: mongo:4.2
+    volumes:
+      - mongo_data:/data/db
     networks:
       - graylog
   # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html
@@ -85,6 +87,8 @@ services:
       - transport.host=localhost
       - network.host=0.0.0.0
       - "ES_JAVA_OPTS=-Dlog4j2.formatMsgNoLookups=true -Xms512m -Xmx512m"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
@@ -122,8 +126,17 @@ services:
       - 12201:12201
       # GELF UDP
       - 12201:12201/udp
+    volumes:
+      - graylog_data:/usr/share/graylog/data
 networks:
     graylog:
       driver: bridge
     claimasylum:
       driver: bridge
+volumes:
+  mongo_data:
+    driver: local
+  es_data:
+    driver: local
+  graylog_data:
+    driver: local
