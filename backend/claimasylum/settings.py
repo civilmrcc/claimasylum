@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import logging
+import graypy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -155,3 +158,30 @@ EMAIL_USE_SSL = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 CLAIMASYLUM_NOTIFICATION_MAIL = os.environ.get('CLAIMASYLUM_NOTIFICATION_MAIL')
+
+
+LOGGING = {
+    'version': 1,
+    # other dictConfig keys here...
+    'handlers': {
+        'graypy': {
+            'level': 'DEBUG',
+            'class': 'graypy.GELFHTTPHandler',
+            'host': 'graylog',
+            'port': 12201,
+        },
+    },
+
+    'loggers': {
+        'django.request': {
+            'handlers': ['graypy'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'claimasylum_django': {
+            'handlers': ['graypy'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
