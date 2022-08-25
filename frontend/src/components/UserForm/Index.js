@@ -658,7 +658,6 @@ export default function UserForm() {
           </Grid>
         </Grid>
       </div>
-      
     </UserPage>
   );
 }

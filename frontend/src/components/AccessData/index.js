@@ -71,7 +71,7 @@ const AccessData = () => {
                 sx={{ color: "#1f1f1f", width: "100%", margin: "20px" }}
                 className="centerText"
               >
-                {t('access_data')}
+                {t('Access Data')}
               </Typography>
               <TextField
                 type="number"

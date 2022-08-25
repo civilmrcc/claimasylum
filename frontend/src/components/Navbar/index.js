@@ -59,6 +59,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const width = window.innerWidth;
+
   const [openLangMenu, setOpenLangMenu] = React.useState(false);
   const [lang, setLang] = React.useState("EN");
   const [redirect, setRedirect] = React.useState(false);
@@ -76,8 +78,24 @@ export default function SearchAppBar() {
     localStorage.setItem('language', e.target.dataset.code);
   }
 
-  const language = localStorage.getItem('language');
+  function getFullLang(short) {
+    switch(short) {
+      case "en":
+        return "English";
+      case "tr":
+        return "Türkçe";
+      case "ar":
+        return "عربي";
+      case "fa":
+        return "فارسی";
+      case "fr":
+        return "Français";
+       case "sp":
+         return "Soomaali";
+      }
+  }
 
+  const language = localStorage.getItem('language');
   return (
     <Box>
       {redirectMeToHome()}
@@ -91,10 +109,10 @@ export default function SearchAppBar() {
             aria-label='open drawer'
             sx={{ mr: 2 }}
           >
-          <HomeOutlinedIcon onClick={callRedirect} />
+            <HomeOutlinedIcon onClick={callRedirect} />
           </IconButton>
-          <Typography onClick={callRedirect} variant='h6' noWrap component='h1' sx={{ flexGrow: 1 }}>
-          { t('Claimasylum.eu')} 
+          <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1 }}>
+          { t('Claimasylum.eu')}
           </Typography>
           <FormControl>
             <RadioGroup
@@ -104,7 +122,7 @@ export default function SearchAppBar() {
               onChange={(e) => handleLang(e)}
               style={{ display: "flex", justifyContent: "end", alignItems:"center", gap: 20 }}
             >
-              <Collapse orientation='horizontal' in={openLangMenu} >
+              <Collapse orientation={width > 600 ? 'horizontal': 'vertical'} in={openLangMenu} className="langMenu">
               <div style={{ display: "flex", justifyContent: "end", alignItems:"center", gap: 20 }} >
               <p style={{cursor: 'pointer', textDecoration: language === 'en'? 'underline' : null}} onClick={handleLang} data-code="en">English</p>
               <p style={{cursor: 'pointer', textDecoration: language === 'tr'? 'underline' : null}} onClick={handleLang} data-code="tr">Türkçe</p>
@@ -114,7 +132,7 @@ export default function SearchAppBar() {
               <p style={{cursor: 'pointer', textDecoration: language === 'so'? 'underline' : null}} onClick={handleLang} data-code="so">Soomaali</p>
               </div>
               </Collapse>
-              <p>{language.toUpperCase()}</p>
+              <p style={{fontWeight: 600}}>{getFullLang(language)}</p>
               <PublicIcon style={{cursor: 'pointer'}} onClick={() => setOpenLangMenu(!openLangMenu)} />
             </RadioGroup>
           </FormControl>

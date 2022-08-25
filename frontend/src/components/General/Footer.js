@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import Typography from "@mui/material/Typography";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -13,15 +14,19 @@ const Footer = () => {
         <Link to="/accessdata">{t('Access Data')}</Link>
         </div>
         <div className="footer__logos">
-        <p> {t('FooterText')}</p>
-          <img src="./Logos/BMBF_RGB_Gef_L_e-1.jpg" />
-          <img src="./Logos/BMBF_RGB_Gef_L_e.jpg" />
-          <img src="./Logos/BMBF_RGB_Gef_L.jpg" />
-          <img src="./Logos/PrototypeFund-P-Logo.png" />
+          <Typography >
+          {t('FooterText')}
+          </Typography>
+          <div> 
+            <img src="./Logos/BMBF_RGB_Gef_L_e-1.jpg" />
+            <img src="./Logos/PrototypeFund-P-Logo.png" />
+          </div>
         </div>
       </div>
+      
     </div>
   );
 };
 
 export default Footer;
+

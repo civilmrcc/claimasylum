@@ -12,29 +12,27 @@ html {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  border: 9px solid #ec5e2a;
+  border: 12px solid #ec5e2a;
 }
 
 .footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 1000;
   padding-right: 9px;
+  margin-top: auto;
 }
 
 .footer__inner {
-  height: 11rem;
+  min-height: 11rem;
   background-color: #171616;
   display: flex;
   align-items: center;
   flex-direction: column;
   color: white;
-  border-right: 9px solid #ec5e2a;
-  border-bottom: 9px solid #ec5e2a;
   box-sizing: border-box;
-  margin-right: 9px;
   gap: 30px;
+  padding: 0 10px;
 }
 
 .footer__links {
@@ -50,15 +48,14 @@ html {
   justify-content: end;
   align-items: center;
   gap: 10px;
-  margin-right: 20px auto;
+  padding: 0 10px;
 }
 
 .footer__logos img { 
   width: 100px;
   height: 80px;
+  margin: 10px 5px
 }
-
-
 
 .footer a {
   text-decoration: none;
@@ -189,4 +186,35 @@ i {
 .inputLabel {
   align-items: 'center';
   display: 'flex';
+}
+
+@media only screen and (max-width: 490px) { 
+  .footer__logos div {
+    display: flex; 
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .langMenu {
+    position: absolute;
+    right: -16px;
+    top: 50px;
+    z-index: 100000;
+  }
+  
+  .langMenu div {
+    flex-direction: column;
+    background-color:#1f1f1f;
+  }
+  
+  .langMenu div p {
+    padding: 3px 42px;
+  }
+}
+
+@media only screen and (max-width: 1440px) { 
+  .footer__logos { 
+    flex-direction: column;
+  }
 }
