@@ -9,6 +9,12 @@ import InputBase from "@mui/material/InputBase";
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { Redirect } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import PublicIcon from '@mui/icons-material/Public';
+import { Collapse } from '@mui/material';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,15 +59,43 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const width = window.innerWidth;
 
+  const [openLangMenu, setOpenLangMenu] = React.useState(false);
+  const [lang, setLang] = React.useState("EN");
   const [redirect, setRedirect] = React.useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const callRedirect = () => setRedirect(true);
   const redirectMeToHome = () => {
     if (redirect) {
       return <Redirect to='/' />;
     }
   };
+
+  function handleLang(e) {
+    console.log(e.target.dataset.code);
+    i18n.changeLanguage(e.target.dataset.code);
+    localStorage.setItem('language', e.target.dataset.code);
+  }
+
+  function getFullLang(short) {
+    switch(short) {
+      case "en":
+        return "English";
+      case "tr":
+        return "Türkçe";
+      case "ar":
+        return "عربي";
+      case "fa":
+        return "فارسی";
+      case "fr":
+        return "Français";
+       case "sp":
+         return "Soomaali";
+      }
+  }
+
+  const language = localStorage.getItem('language');
   return (
     <Box>
       {redirectMeToHome()}
@@ -80,6 +114,28 @@ export default function SearchAppBar() {
           <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1 }}>
           { t('Claimasylum.eu')}
           </Typography>
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+              onChange={(e) => handleLang(e)}
+              style={{ display: "flex", justifyContent: "end", alignItems:"center", gap: 20 }}
+            >
+              <Collapse orientation={width > 600 ? 'horizontal': 'vertical'} in={openLangMenu} className="langMenu">
+              <div style={{ display: "flex", justifyContent: "end", alignItems:"center", gap: 20 }} >
+              <p style={{cursor: 'pointer', textDecoration: language === 'en'? 'underline' : null}} onClick={handleLang} data-code="en">English</p>
+              <p style={{cursor: 'pointer', textDecoration: language === 'tr'? 'underline' : null}} onClick={handleLang} data-code="tr">Türkçe</p>
+              <p style={{cursor: 'pointer', textDecoration: language === 'fa'? 'underline' : null}} onClick={handleLang} data-code="fa">فارسی</p>
+              <p style={{cursor: 'pointer', textDecoration: language === 'ar'? 'underline' : null}} onClick={handleLang} data-code="ar">عربي</p>
+              <p style={{cursor: 'pointer', textDecoration: language === 'fr'? 'underline' : null}} onClick={handleLang} data-code="fr">Français</p>
+              <p style={{cursor: 'pointer', textDecoration: language === 'so'? 'underline' : null}} onClick={handleLang} data-code="so">Soomaali</p>
+              </div>
+              </Collapse>
+              <p style={{fontWeight: 600}}>{getFullLang(language)}</p>
+              <PublicIcon style={{cursor: 'pointer'}} onClick={() => setOpenLangMenu(!openLangMenu)} />
+            </RadioGroup>
+          </FormControl>
         </Toolbar>
       </AppBar>
     </Box>

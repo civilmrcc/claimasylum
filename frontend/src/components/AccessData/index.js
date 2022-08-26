@@ -68,10 +68,10 @@ const AccessData = () => {
               <Typography
                 variant="h"
                 component="h2"
-                sx={{ color: "#1976d2", width: "100%", margin: "20px" }}
+                sx={{ color: "#1f1f1f", width: "100%", margin: "20px" }}
                 className="centerText"
               >
-                {t('access_data')}
+                {t('Access Data')}
               </Typography>
               <TextField
                 type="number"
@@ -107,6 +107,7 @@ const AccessData = () => {
           )}
         </Grid>
       </Grid>
+      <p className="centerText theme">{t('AccessDataValue')}</p>
     </UserPage>
   );
 };

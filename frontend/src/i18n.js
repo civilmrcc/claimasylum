@@ -1,23 +1,31 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import english from "./data/language/english.js";
-import german from "./data/language/german.js";
+import turkish from "./data/language/turkey.js";
 import persian from "./data/language/persian.js";
 import arabic from "./data/language/arabic.js";
+import french from "./data/language/french.js"
+import somali from "./data/language/somali.js"
 
 
 const resources = {
   en: {
     translation: english
   },
-  ger: {
-    translation: german
+  tr: {
+    translation: turkish
   },
   fa: {
     translation: persian
   },
   ar: {
     translation: arabic
+  },
+  fr: {
+    translation: french
+  },
+  so: {
+    translation: somali
   },
 }
 

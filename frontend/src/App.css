@@ -1,9 +1,10 @@
 html {
   scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 .theme {
-  color: #1976d2 !important;
+  color: #171616 !important;
 }
 
 .userPage {
@@ -11,23 +12,49 @@ html {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
+  border: 12px solid #ec5e2a;
 }
 
 .footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 1000;
+  padding-right: 9px;
+  margin-top: auto;
 }
 
 .footer__inner {
+  min-height: 11rem;
+  background-color: #171616;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  box-sizing: border-box;
+  gap: 30px;
+  padding: 0 10px;
+}
+
+.footer__links {
   width: 100%;
-  height: 3rem;
-  background-color: #1976d2;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: white;
+  margin-top: 20px;
+}
+.footer__logos  {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.footer__logos img { 
+  width: 100px;
+  height: 80px;
+  margin: 10px 5px
 }
 
 .footer a {
@@ -55,7 +82,7 @@ button {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: #1976d2;
+  background-color: #ec5e2a;
   height: 2.5rem;
   color: white;
   border-radius: 0.2rem;
@@ -147,4 +174,47 @@ i {
 .userData__signature{
   padding: 0 0;
   margin-bottom: 4rem;
+}
+
+.captcha {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.inputLabel {
+  align-items: 'center';
+  display: 'flex';
+}
+
+@media only screen and (max-width: 490px) { 
+  .footer__logos div {
+    display: flex; 
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .langMenu {
+    position: absolute;
+    right: -16px;
+    top: 50px;
+    z-index: 100000;
+  }
+  
+  .langMenu div {
+    flex-direction: column;
+    background-color:#1f1f1f;
+  }
+  
+  .langMenu div p {
+    padding: 3px 42px;
+  }
+}
+
+@media only screen and (max-width: 1440px) { 
+  .footer__logos { 
+    flex-direction: column;
+  }
 }
