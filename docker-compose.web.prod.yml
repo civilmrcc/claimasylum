@@ -1,0 +1,42 @@
+version: '3'
+### THIS DOCKER COMPOSE IS FOR PRODUCTION PURPOSES ONLY ###  
+services:
+  frontend:
+    container_name: claim.frontend
+    entrypoint: ['npm', '--prefix', '/claimasyl', 'run', 'build']
+    volumes:
+        - ./frontend/build:/claimasyl/build
+    build:
+      context: frontend
+  backend:
+    build: ./backend
+    command: bash /code/docker-entrypoint.sh
+    volumes:
+      - ./backend/:/code
+      - ./keys/private/:/code/privatekeys/
+      - ./keys/public/:/code/publickeys/
+    ports:
+      - "8000:8000"
+    environment:
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_FROM_MAIL=${EMAIL_FROM_MAIL}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_USE_TLS=${EMAIL_USE_TLS}
+      - EMAIL_USE_SSL=${EMAIL_USE_SSL}
+      - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
+    networks:
+      - claimasylum
+      - graylog
+  nginx:
+    build: nginx
+    ports:
+        - 8080:8080
+    volumes:
+        - ./nginx/logs:/usr/local/var/log/nginx/
+        - ./frontend/build:/usr/share/nginx/html
+    depends_on:
+      - backend
+    networks:
+      - claimasylum
