@@ -28,15 +28,3 @@ services:
       - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
     networks:
       - claimasylum
-      - graylog
-  nginx:
-    build: nginx
-    ports:
-        - 8080:8080
-    volumes:
-        - ./nginx/logs:/usr/local/var/log/nginx/
-        - ./frontend/build:/usr/share/nginx/html
-    depends_on:
-      - backend
-    networks:
-      - claimasylum
