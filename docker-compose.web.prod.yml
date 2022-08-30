@@ -26,5 +26,3 @@ services:
       - EMAIL_USE_TLS=${EMAIL_USE_TLS}
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
       - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
-    networks:
-      - claimasylum
