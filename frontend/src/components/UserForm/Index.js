@@ -324,7 +324,7 @@ export default function UserForm() {
             />
           </Grid>
           <Grid item {...inputConStyle}>
-            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Email')} <span title={t("Email info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
+          <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Email')} <span tabindex="0" title={t("Email info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
             <TextField
               value={form.email}
               type="email"
@@ -361,7 +361,7 @@ export default function UserForm() {
             />
           </Grid>
           <Grid item {...inputConStyle}>
-            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Phone No')} <span title={t("Phone info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
+          <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Phone No')} <span tabindex="0" title={t("Phone info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
             <TextField
               value={form.phone}
               type="text"
@@ -387,7 +387,7 @@ export default function UserForm() {
                 <FormLabel id="demo-row-radio-buttons-group-label">
                   {t('Are you underage?')}
                 </FormLabel>
-                <span title={t("Are you a minor")}><InfoIcon sx={{ fontSize: 16, marginLeft: '4px', color: '#6a6a6a' }} /></span>
+                <span tabindex="0" title={t("Are you a minor")}><InfoIcon sx={{ fontSize: 16, marginLeft: '4px', color: '#6a6a6a' }} /></span>
               </div>
                 
               <RadioGroup
@@ -422,7 +422,7 @@ export default function UserForm() {
                 <FormLabel id="demo-row-radio-buttons-group-label">
                   {t('Is geolocation correct?')}
                 </FormLabel>
-                <span title={t("Geolocation")}><InfoIcon sx={{ fontSize: 16, marginLeft: '4px', color: '#6a6a6a' }} /></span>
+                <span tabindex="0" title={t("Geolocation")}><InfoIcon sx={{ fontSize: 16, marginLeft: '4px', color: '#6a6a6a' }} /></span>
               </div>
              
               <RadioGroup
@@ -461,7 +461,7 @@ export default function UserForm() {
               <div><p>{t('TextPhoto')}</p></div>
               <div style={{display:'inline-block',width:'20%'}}>
                 <Button
-                  style={{ width: '100%', backgroundColor: '#ec5e2a' }}
+                  style={{ width: '100%', backgroundColor: '#ec5e2a'}}
                   variant="contained"
                   onClick={() => fileInput.current.click()}
                 >
@@ -550,7 +550,7 @@ export default function UserForm() {
           </Grid> */}
 
           <Grid item {...inputConStyle}>
-            <h4 className="theme" style={{display: "flex", alignItems : "center"}} >{t('Sign bellow(Draw)')}  <span title={t("Signature")}><InfoIcon sx={{ fontSize: 16, marginLeft: '3px', marginTop: '4px' }} /></span></h4>
+          <h4 className="theme" style={{display: "flex", alignItems : "center"}} >{t('Sign bellow(Draw)')}  <span tabindex="0" title={t("Signature")}><InfoIcon sx={{ fontSize: 16, marginLeft: '3px', marginTop: '4px' }} /></span></h4>
             <div className="signature__box">
               <SignaturePad
                 ref={sigCanvas}
@@ -567,7 +567,7 @@ export default function UserForm() {
             </div>
           </Grid>
           <Grid item {...inputConStyle}>
-            <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Passwort (Not mandatory)')} <span title={t("Pass info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
+          <Typography color={'#6a6a6a'} style={{alignItems: 'center', display: 'flex'}}>{t('Passwort (Not mandatory)')} <span tabindex="0" title={t("Pass info")}><InfoIcon sx={{ fontSize: 16, marginTop: 1, marginLeft: '4px' }} /></span></Typography>
             <TextField
               value={form.passwort}
               type="text"
@@ -580,7 +580,7 @@ export default function UserForm() {
           </Grid>
             
             <div>
-              <a href='/impressum'>{t('Privacy')}</a> <Checkbox checked={privacy} onChange={ (e) => setPrivacy(e.target.checked) } inputProps={{'aria-label': 'Checkbox demo'}} />
+              <a href='/impressum'>{t('Privacy')}</a> <Checkbox checked={privacy} onChange={ (e) => setPrivacy(e.target.checked) } style={{alignItems: 'center', display: 'flex'}}inputProps={{'aria-label': 'Checkbox demo'}} />
             </div>
             <div className="captcha">
               <LoadCanvasTemplateNoReload  onChange={(val) => console.log(val)} />
