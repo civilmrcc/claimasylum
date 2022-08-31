@@ -218,3 +218,26 @@ i {
     flex-direction: column;
   }
 }
+
+@media (pointer: coarse), (hover: none) {
+  [title] {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    color: #000 !important;
+  }
+  [title]:focus::after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    color: #000 !important;
+    background-color: #fff;
+    border: 1px solid;
+    width: 900%;
+    padding: 3px;
+    font-size: 10px;
+    z-index: 111111;
+    left: 0;
+  }
+
+}
