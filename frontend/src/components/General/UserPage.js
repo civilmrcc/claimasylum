@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Navbar from "../Navbar";
 import Footer from "./Footer";
+ import Banner from "../Banner"
 
 const UserPage = ({ children }) => {
   const [redirect, setRedirect] = useState(false);
@@ -17,6 +18,7 @@ const UserPage = ({ children }) => {
     <div className="userPage">
       {redirectMeToHome()}
       <Navbar />
+      <Banner />
       <div >
       </div>
       <div>{children}</div>

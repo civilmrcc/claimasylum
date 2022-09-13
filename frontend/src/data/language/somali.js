@@ -45,7 +45,8 @@ const french = {
     "Geolocation": "Is this really the location you are currently at? If not, click the reload location button!",
     "Signature": "Your signature is necessary if you want to apply for asylum",
     "Send captcha": "Send captcha",
-    "Privacy": "Do you agree with the terms & conditions?"
+    "Privacy": "Do you agree with the terms & conditions?",
+    "Banner":"This app is only working in poland and greece"
 }
 
 
