@@ -15,10 +15,30 @@ Currently we use docker-compose to deploy and develop the application. The repo 
 ```
 ## Install
 
+
 ```
 git clone git@gitlab.com:Mareikei/claimasylum.git
 podman-compose --env-file .env up
 ```
+
+
+### Development
+```
+git clone git@gitlab.com:Mareikei/claimasylum.git
+podman-compose --env-file .env up
+```
+To configure graylog login with admin:admin and add the input for django logging:
+    1. In the top navigation click on "System/Inputs" and select "Inputs" in the dropdown-menu.
+    2. Select Input type "GELF HTTP"
+    3. Click "Launch input"
+    4. A window appears where you have to enter the title "Claimasylum_Django"
+    5. Click on "save"
+
+
+After docker-compose is up an running you can access the application via:
+https://localhost:8080 (web frontend)
+https://localhost:9000 (graylog)
+
 
 
 ## Contribute
