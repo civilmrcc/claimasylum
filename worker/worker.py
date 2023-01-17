@@ -5,6 +5,7 @@ import os
 import json
 import logging
 import graypy
+import base64,io
 from fpdf import FPDF
 
 
@@ -27,7 +28,14 @@ def gen_pdf(formdata):
     cellheight = 30
     for key in formdata:
         print(key,i)
-        pdf.cell(200, 30, txt=key+' : '+str(formdata[key]), ln=1)
+        if key === 'signature':
+            f = str(formdata[key]).split('base64,')[1]
+            f = base64.b64decode(f)
+            f = io.BytesIO(f)
+
+        else:
+            pdf.cell(200, 30, txt=key+' : '+str(formdata[key]), ln=1)
+
         i += 1
     pdf.output("/code/pdfs/simple_demo.pdf")
     logger.debug('PDF generation done')
