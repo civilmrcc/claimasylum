@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.core.exceptions import BadRequest
 from django.conf import settings
-
-from shapely.geometry import Point
-from shapely.geometry.polygon import Polygon
+from pyproj import Geod
+from shapely.geometry import Point,LineString,Polygon
+from shapely.ops import nearest_points
 from dataclasses import dataclass
 
 import logging
@@ -31,8 +31,12 @@ def validate_coordinates(position):
     class Item:
         polygon:Polygon
         area:dict
+        #returns distance in meters
         def distance_to_point(self, point:Point):
-            return self.polygon.exterior.distance(point)
+            p1, p2 = nearest_points(self.polygon, point)
+            line_string = LineString([p1,p2])
+            geod = Geod(ellps="WGS84")
+            return geod.geometry_length(line_string)
 
     for area_id, area in enumerate(features):
         print(area['geometry']['type'], area_id)
@@ -67,9 +71,9 @@ def validate_coordinates(position):
         closest_item = min(poly_items, key=lambda item:item.distance_to_point(point))
         print(closest_item)
         distance = closest_item.distance_to_point(point)
-        print('closest poly')
-        print(distance)
-        print('asdads')
+        if distance <= 50000:
+            return closest_item
+        
     return False
 
 def index(request):

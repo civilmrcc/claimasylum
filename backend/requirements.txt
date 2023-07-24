@@ -4,3 +4,4 @@ django-cors-headers>=3.13.0
 PGPy>=0.5.4
 graypy>=1.2
 shapely>=1.8.4
+pyproj>=3.6.0

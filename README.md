@@ -38,8 +38,8 @@ To configure graylog login with admin:admin and add the input for django logging
 After docker-compose is up an running you can access the application via:
 https://localhost:8080 (web frontend)
 https://localhost:9000 (graylog)
-
-
+### Configure Graylog
+After installation log into graylog, select "system" in inputs and create a "gelfhttp" input (default values can be used).
 
 ## Contribute
 We would love for you to contribute to claimasylum and help make it even better than it is today! As a contributor, here are the guidelines we would like you to follow:
