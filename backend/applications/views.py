@@ -68,12 +68,14 @@ def validate_coordinates(position):
         print(matched_polygon)
         return matched_polygon
     else:
+        print("did not match polygon - use closest polygon:")
         closest_item = min(poly_items, key=lambda item:item.distance_to_point(point))
-        print(closest_item)
+        print(closest_item['properties'])
         distance = closest_item.distance_to_point(point)
-        if distance <= 50000:
+        if distance <= 9999999999999:
             return closest_item
-        
+        else:
+            print("distance to large")
     return False
 
 def index(request):
