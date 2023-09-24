@@ -26,6 +26,8 @@ services:
       - EMAIL_USE_TLS=${EMAIL_USE_TLS}
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
       - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
+      - DJANGO_DEBUG=${DEBUG}
+      - ALLOWED_HOST=${ALLOWED_HOST}
     depends_on:
       - graylog
     networks:
@@ -67,7 +69,7 @@ services:
       - EMAIL_PORT=${EMAIL_PORT}
       - EMAIL_USE_TLS=${EMAIL_USE_TLS}
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
-      - CLAIMASYLUM_NOTIFICATION_MAIL
+      - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
     networks:
       - graylog
 
