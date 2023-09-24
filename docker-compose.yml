@@ -33,6 +33,8 @@ services:
     networks:
       - claimasylum
       - graylog
+    extra_hosts:
+      - ${EXTRA_HOSTS}
   keys:
     build:
       context: keys
