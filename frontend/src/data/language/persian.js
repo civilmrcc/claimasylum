@@ -45,7 +45,7 @@ const persian = {
     "Signature": "Your signature is necessary if you want to apply for asylum",
     "Send captcha": "Send captcha",
     "Privacy": "Do you agree with the terms & conditions?",
-    "Banner":"This app is only working in poland and greece"
+    "Banner":"This app is only working in Greece"
 }
 
 
