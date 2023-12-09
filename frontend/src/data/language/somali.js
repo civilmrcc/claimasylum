@@ -26,7 +26,7 @@ const french = {
     "Further Support":"Caawinaad dheeri ah ",
     "FurtherSupportText":"Halkan waxaad kaheli kartaa caawinaad dheeri ah, \n Hadii aad hada timid wadan Yurub ah: \nwelcome2europe.info \nHadii dib ucelintaada soo dhowaato: \n  alarmphone \n",
     "list1" : "Eng For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.",
-    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nZimmerstr. 11\n\n10969 Berlin\n\nResponsible for content: Ruben Neugebauer  \nWaxaa kamasuul ah Contengiga/waxa Meesha kujira: Ruben Neugebauer",
+    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nLausitzer Str. 10\n\n10999 Berlin\n\nResponsible for content: Ruben Neugebauer  \nWaxaa kamasuul ah Contengiga/waxa Meesha kujira: Ruben Neugebauer",
     "Contact":"Kalaxiriir",
     "ContactValue":"mail: info-claimasylum@systemli.org",
     "Access Data":"Profilekaaga",

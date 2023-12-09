@@ -25,7 +25,7 @@ const english = {
     "FurtherSupportText":"Here you can find support\nIf you have just arrived in a European country:\n'welcome2europe.info'\nIf a pushback has already submitted an asylum application via claim-asylum.eu",
     "list1" : "Eng For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.",
     "Impressum":"Impressum",
-    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nZimmerstr. 11\n\n10969 Berlin\n\nResponsible for content: Ruben Neugebauer",
+    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nLausitzer Str. 10\n\n10999 Berlin\n\nResponsible for content: Ruben Neugebauer",
     "Contact":"Contact",
     "ContactValue":"mail: info-claimasylum@systemli.org",
     "Access Data":"Access Data",
