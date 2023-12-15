@@ -26,7 +26,7 @@ const persian = {
     "FurtherSupportText":" در اینجا می توانید پشتیبانی بیشتری پیدا کنید، اگر به تازگی وارد یکی از کشورهای اروپایی شده اید Welcome2europe.info\n\n اگر پس زدنتان محتمل است با زنگ هشدار +334 8651 7161 (http://alarmphone.org/) تماس بگیرید \n\n اگر قبلاً از طریق درخواست پناهندگی درخواست پناهندگی داده اید، می توانید به داده های خود در اینجا دسترسی داشته باشید: https://app.claim-asylum.eu/accessdata",
     "list1" : "Eng For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.",
     "Impressum":" چاپ:",
-    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nZimmerstr. 11\n\n10969 برلین\n\n مسئول محتوا: روبن نویگبوئر",
+    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nLausitzer Str. 10\n\n10999 Berlin\n\n مسئول محتوا: روبن نویگبوئر",
     "Contact":" تماس: ",
     "ContactValue":" پست الکترونیکی: info-claimasylum@systemli.org",
     "Access Data":" پروفایل شما:",
