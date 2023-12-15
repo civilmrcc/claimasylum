@@ -25,7 +25,7 @@ const arabic = {
     "list1" : "Eng For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.",
     "Impressum":"بصمة",
     "Further Support":" مزيد من ألدعم ",
-    "FurtherSupportText":" هنا تجد المزيد من الدعم، إذا وصلت للتو إلى بلد أوروبي:  \n welcome2europe.info \n إذا كان الطرد ألغير قانوني وشكياً  \n  الخط ألمنبه \n إذا كانت عملية الطرد ألغير قانوني حصلت مسبقاً: \n  إذا كنت قد قدمت بالفعل طلب لجوء من خلال claim-asylum.eu \n \n استرداد البيانات \n",
+    "FurtherSupportText":" هنا تجد المزيد من الدعم، إذا وصلت للتو إلى بلد أوروبي: welcome2europe.info \n\n إذا كان الطرد ألغير قانوني وشكياً اتصل ب Alarmphone +334 8651 7161 (http://alarmphone.org/) \n\n إذا كنت قد قدمت بالفعل طلب لجوء عبر موقعclaimasylum، فيمكنك الوصول إلى بياناتك هنا: https://app.claim-asylum.eu/accessdata",
     "list1" : "Eng For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.",
     "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nZimmerstr. 11\n\n10969 Berlin\n\nالمسؤول عن المحتوى: روبن نيوجيباور    ",
     "Contact":" عنوان الأتصال:  ",
