@@ -46,7 +46,7 @@ const english = {
     "Send captcha": "Send captcha",
     "Privacy": "Do you agree with the terms & conditions?",
     "Statistics": "We will not publish any personal data of you, e.g. your name, email or birthday. We will only save the location, date and outcome/status of your case. Of course, you have the right to decline this by not clicking the checkbox",
-    "Banner":"This app is only working in Greece"
+    "Banner":"This app is only working in Greece and Poland"
 }
 
 export default english;
