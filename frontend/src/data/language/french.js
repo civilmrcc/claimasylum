@@ -48,7 +48,7 @@ const french = {
     "Send captcha": "Send captcha",
     "Privacy": "Êtes-vous d'accord avec les termes et conditions?",
     "Statistics": "Nous ne publierons aucune donnée personnelle vous concernant, par ex. votre nom, email ou anniversaire. Nous enregistrerons uniquement le lieu, la date et le résultat/statut de votre dossier. Bien entendu, vous avez le droit de refuser cette demande en ne cochant pas la case",
-    "Banner":"Cette application ne fonctionne qu'en Grèce"
+    "Banner":"Cette application ne fonctionne qu'en Grèce et en Pologne"
 }
 
 
