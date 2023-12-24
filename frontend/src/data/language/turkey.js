@@ -44,8 +44,9 @@ const turkish = {
     "Geolocation": "Is this really the location you are currently at? If not, click the reload location button!",
     "Signature": "Your signature is necessary if you want to apply for asylum",
     "Send captcha": "Send captcha",
-    "Privacy": "Do you agree with the terms & conditions?",
-    "Banner":"This app is only working in Greece"
+    "Privacy": "Şartlar ve koşulları kabul ediyor musunuz?",
+    "Statistics": "Size ait herhangi bir kişisel veriyi yayınlamayacağız; adınız, e-posta adresiniz veya doğum gününüz. Davanızın yalnızca yerini, tarihini ve sonucunu/durumunu kaydedeceğiz. Elbette onay kutusunu tıklamayarak bunu reddetme hakkına sahipsiniz.",
+    "Banner":"Bu uygulama yalnızca Yunanistan ve Polonya'da çalışıyor"
 }
 
 

@@ -45,8 +45,9 @@ const french = {
     "Geolocation": "Is this really the location you are currently at? If not, click the reload location button!",
     "Signature": "Your signature is necessary if you want to apply for asylum",
     "Send captcha": "Send captcha",
-    "Privacy": "Do you agree with the terms & conditions?",
-    "Banner":"This app is only working in Greece"
+    "Privacy": "Ma ku raacsan tahay shuruudaha & shuruudaha?",
+    "Statistics": "Ma daabici doono wax xog shakhsi ah oo adiga kugu saabsan, tusaale. magacaaga, emailkaaga ama dhalashadaada. Waxaan kaliya badbaadin doonaa goobta, taariikhda iyo natiijada/xaaladda kiiskaaga. Dabcan, waxaad xaq u leedahay inaad diido tan adigoon gujin sanduuqa hubinta",
+    "Banner":"Appkan waxa uu ka shaqeeyaa Giriiga iyo Poland kaliya"
 }
 
 
