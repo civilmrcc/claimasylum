@@ -581,10 +581,10 @@ export default function UserForm() {
           </Grid>
             
           <div>
-              <a href='/impressum'>{t('Privacy')}</a> <Checkbox checked={privacy} onChange={ (e) => setPrivacy(e.target.checked) } style={{alignItems: 'center', display: 'flex'}}inputProps={{'aria-label': 'Checkbox demo'}} />
+              <a href='/dataprotection.html'>{t('Privacy')}</a> <Checkbox checked={privacy} onChange={ (e) => setPrivacy(e.target.checked) } style={{alignItems: 'center', display: 'flex'}}inputProps={{'aria-label': 'Checkbox demo'}} />
             </div>
             <div>
-              <a href='/impressum'>{t('Statistics')}</a> <Checkbox checked={privacy} onChange={ (e) => setPrivacy(e.target.checked) } style={{alignItems: 'center', display: 'flex'}}inputProps={{'aria-label': 'Checkbox demo'}} />
+              <a href='/dataprotection.html'>{t('Statistics')}</a> <Checkbox checked={privacy} onChange={ (e) => setPrivacy(e.target.checked) } style={{alignItems: 'center', display: 'flex'}}inputProps={{'aria-label': 'Checkbox demo'}} />
             </div>
             <div className="captcha">
               <LoadCanvasTemplateNoReload  onChange={(val) => console.log(val)} />
