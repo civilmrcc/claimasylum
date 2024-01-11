@@ -25,7 +25,7 @@ services:
   ### GRAYLOG STUFF ###  
   # MongoDB: https://hub.docker.com/_/mongo/
   mongo:
-    image: mongo:4.2
+    image: mongo:5.0.13
     volumes:
       - mongo_data:/data/db
     networks:
@@ -52,7 +52,7 @@ services:
       - graylog
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
-    image: graylog/graylog:4.2
+    image: graylog/graylog:5.0
     environment:
       # CHANGE ME (must be at least 16 characters)!
       - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
