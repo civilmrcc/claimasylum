@@ -27,8 +27,7 @@ def gen_pdf(formdata):
     i = 1
     cellheight = 30
     for key in formdata:
-        print(key,i)
-        if key === 'signature':
+        if key == 'signature':
             f = str(formdata[key]).split('base64,')[1]
             f = base64.b64decode(f)
             f = io.BytesIO(f)
