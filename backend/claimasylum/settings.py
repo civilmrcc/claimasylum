@@ -167,7 +167,7 @@ LOGGING = {
         'graypy': {
             'level': 'DEBUG',
             'class': 'graypy.GELFHTTPHandler',
-            'host': 'graylog',
+            'host': os.environ.get('GRAYLOG_HOST'),
             'port': 12201,
         },
     },
