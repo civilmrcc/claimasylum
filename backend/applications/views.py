@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.core.exceptions import BadRequest
@@ -7,6 +6,8 @@ from pyproj import Geod
 from shapely.geometry import Point,LineString,Polygon
 from shapely.ops import nearest_points
 from dataclasses import dataclass
+import re
+#from email_validator import validate_email, EmailNotValidError
 
 import logging
 import pgpy
@@ -39,10 +40,9 @@ def validate_coordinates(position):
             return geod.geometry_length(line_string)
 
     for area_id, area in enumerate(features):
-        print(area['geometry']['type'], area_id)
+        #polygon and multipolygon behave nearly the same,
+        #@todo the code below could be moved to a function
         if area['geometry']['type'] == 'Polygon':
-            print("got polygon")
-            polygon = Polygon(area['geometry']['coordinates'][0])
             poly_item  = Item(Polygon(area['geometry']['coordinates'][0]), area)
             poly_items.append(poly_item)
             if poly_item.polygon.contains(point):
@@ -53,7 +53,7 @@ def validate_coordinates(position):
                 if area['properties']['priority'] > matched_polygon['area']['properties']['priority']:
                     matched_polygon = poly_item
         if area['geometry']['type'] == 'MultiPolygon':
-            print("got multipolygon",len(area['geometry']['coordinates']))
+            #print("got multipolygon",len(area['geometry']['coordinates']),area['properties']['priority'])
             for polyg in area['geometry']['coordinates']:
                 poly_item  = Item(Polygon(polyg[0]), area)
                 poly_items.append(poly_item)
@@ -65,15 +65,31 @@ def validate_coordinates(position):
                     if area['properties']['priority'] > matched_polygon['area']['properties']['priority']:
                         matched_polygon = poly_item
     if matched_polygon:
-        print(matched_polygon)
-        return matched_polygon
+        #print('polygon matched')
+        return {'status':'matched_polygon','polygon':closest_polygon}
     else:
-        closest_item = min(poly_items, key=lambda item:item.distance_to_point(point))
-        print(closest_item)
-        distance = closest_item.distance_to_point(point)
-        if distance <= 50000:
-            return closest_item
-        
+        print("did not match polygon - use closest polygon:")
+
+        # Find the closest polygon
+        closest_polygon = None
+        min_distance = float('inf')
+        for item in poly_items:
+            #the distance returned by shapely is in degrees, which has to be converted to metric
+            closest_polygon_point = nearest_points(item.polygon, point)            
+            line_string = LineString([closest_polygon_point[0], closest_polygon_point[1]])
+            geod = Geod(ellps="WGS84")
+            min_distance_meters = geod.geometry_length(line_string)
+
+            if min_distance_meters < min_distance:
+                #print("new min distance:!!",min_distance_meters,min_distance)
+                min_distance = min_distance_meters
+                closest_polygon = item.area
+
+        if min_distance <= 100000: #100km
+            return {'status':'no_match_closest_polygon','polygon':closest_polygon}
+        else:
+            
+            logger.info('request sent, but distance was to large')
     return False
 
 def index(request):
@@ -81,8 +97,10 @@ def index(request):
     #get formdata
     formdata = json.loads(request.body)['formdata']
     logger.debug('Formdata:',formdata)
+
     matched_polygon = validate_coordinates((formdata['locationInfo']['location']['lng'],formdata['locationInfo']['location']['lat']))
-    print(formdata['locationInfo']['location']['lng'],formdata['locationInfo']['location']['lat'])
+
+    #print(formdata['locationInfo']['location']['lng'],formdata['locationInfo']['location']['lat'])
     if not matched_polygon:
         logger.error('location_not_in_polygon',formdata)
         raise BadRequest({'error_message':'location_not_in_polygon'})
@@ -95,14 +113,37 @@ def index(request):
     # from pgpy documentation:
     # the bitwise OR operator '|' is used to add a signature to a PGPMessage.
     encrypted_txt_msg |= priv_key.sign(encrypted_txt_msg)
+    print(matched_polygon['polygon']['properties'])
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    emails = [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)]
+    for value in matched_polygon['polygon']['properties']:
+        print(matched_polygon['polygon']['properties'][value])
+        if isinstance(matched_polygon['polygon']['properties'][value], str) and re.fullmatch(email_pattern, matched_polygon['polygon']['properties'][value]):
+            emails.append(matched_polygon['polygon']['properties'][value])
+
+    #final_emails_no_debug = emails
+    debug_mails = [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)]
     #EMAIL_HOST_USER
+    #'Subject',
+    #       'htmlBody',
+    #       'from@email.com',
+    #       [to@email.com],
+    #       [bcc@email.com],
+    #       reply_to=['reply_to@email.com']
+
     if send_mail(
         'New Request submitted',
-        str(encrypted_txt_msg),
-        getattr(settings, "EMAIL_FROM_MAIL", None),
-        [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)],
+        str(encrypted_txt_msg), #body
+        getattr(settings, "EMAIL_FROM_MAIL", None), #from
+        debug_mails, #to
+        #debug_mails, #bbc
         fail_silently=False,
     ):
-        logger.info('Request from server sent successfully via mail')
-        return HttpResponse(200)
+        logger.info('Request from server sent successfully via mail (STILL TESTING DATA, no real data)')
+        response_data = {'status':matched_polygon['status'],'properties':matched_polygon['polygon']['properties']}
+
+        logger.info('returned confirmation message to user, with data:')
+        logger.info(response_data)
+        return HttpResponse(json.dumps(response_data))
+    
     raise BadRequest({'error_message':'unknown_error'})

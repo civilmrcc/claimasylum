@@ -145,15 +145,32 @@ export default function UserForm() {
       }
     }
 
-    alert("Form added successfully!");
-
     form.locationInfo = locationInfo;
     // Save data in local storage since apis are not working yet so to show this data on other page we will mimic data storage.
-     jsonContent = JSON.stringify(form);
+    jsonContent = JSON.stringify(form);
     localStorage.setItem(USER_DATA_KEY, jsonContent);
+    // eslint-disable-next-line no-restricted-globals
+    if(confirm("You are about to send your asylum request, are you sure that you are on greece territory?")){
+      
+      // this api call throw an network error since api does not exist actually right now. This is just to mimic api call process
+      let result = await sendFormData(form);
+      console.log(result);
+      let confirmation_text = '';
+      console.log(result.data);
+      console.log(result.data.status);
+      switch(result.data.status){
+        case "no_match_closest_polygon":
+          confirmation_text = `Thank you! We could not validate that you are in greece but we sent the asylum request to the closest authority: ${result.data.properties.re_pol_dir}`
+          break;
+        case "matched_polygon":
+          confirmation_text = `Thank you, your request was submitted. We sent the asylum request to this authority: ${result.data.properties.re_pol_dir}`
+          break;
+        default:
+          confirmation_text = "There was an error sending your request"
+        }
 
-    // this api call throw an network error since api does not exist actually right now. This is just to mimic api call process
-    await sendFormData(form);
+      alert(confirmation_text);
+    }
 
     // const fileName = "output";
     // const json = jsonContent;
