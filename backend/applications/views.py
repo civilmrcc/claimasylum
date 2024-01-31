@@ -6,6 +6,8 @@ from pyproj import Geod
 from shapely.geometry import Point,LineString,Polygon
 from shapely.ops import nearest_points
 from dataclasses import dataclass
+import re
+#from email_validator import validate_email, EmailNotValidError
 
 import logging
 import pgpy
@@ -111,12 +113,30 @@ def index(request):
     # from pgpy documentation:
     # the bitwise OR operator '|' is used to add a signature to a PGPMessage.
     encrypted_txt_msg |= priv_key.sign(encrypted_txt_msg)
+    print(matched_polygon['polygon']['properties'])
+    email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    emails = [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)]
+    for value in matched_polygon['polygon']['properties']:
+        print(matched_polygon['polygon']['properties'][value])
+        if isinstance(matched_polygon['polygon']['properties'][value], str) and re.fullmatch(email_pattern, matched_polygon['polygon']['properties'][value]):
+            emails.append(matched_polygon['polygon']['properties'][value])
+
+    #final_emails_no_debug = emails
+    debug_mails = [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)]
     #EMAIL_HOST_USER
+    #'Subject',
+    #       'htmlBody',
+    #       'from@email.com',
+    #       [to@email.com],
+    #       [bcc@email.com],
+    #       reply_to=['reply_to@email.com']
+
     if send_mail(
         'New Request submitted',
-        str(encrypted_txt_msg),
-        getattr(settings, "EMAIL_FROM_MAIL", None),
-        [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)],
+        str(encrypted_txt_msg), #body
+        getattr(settings, "EMAIL_FROM_MAIL", None), #from
+        debug_mails, #to
+        #debug_mails, #bbc
         fail_silently=False,
     ):
         logger.info('Request from server sent successfully via mail (STILL TESTING DATA, no real data)')
