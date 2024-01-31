@@ -26,11 +26,15 @@ services:
       - EMAIL_USE_TLS=${EMAIL_USE_TLS}
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
       - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
+      - DJANGO_DEBUG=${DEBUG}
+      - ALLOWED_HOST=${ALLOWED_HOST}
     depends_on:
       - graylog
     networks:
       - claimasylum
       - graylog
+    extra_hosts:
+      - ${EXTRA_HOSTS}
   keys:
     build:
       context: keys
@@ -67,14 +71,14 @@ services:
       - EMAIL_PORT=${EMAIL_PORT}
       - EMAIL_USE_TLS=${EMAIL_USE_TLS}
       - EMAIL_USE_SSL=${EMAIL_USE_SSL}
-      - CLAIMASYLUM_NOTIFICATION_MAIL
+      - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
     networks:
       - graylog
 
   ### GRAYLOG STUFF ###  
   # MongoDB: https://hub.docker.com/_/mongo/
   mongo:
-    image: mongo:4.2
+    image: mongo:5.0.13
     volumes:
       - mongo_data:/data/db
     networks:
@@ -101,7 +105,7 @@ services:
       - graylog
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
-    image: graylog/graylog:4.2
+    image: graylog/graylog:5.0
     environment:
       # CHANGE ME (must be at least 16 characters)!
       - GRAYLOG_PASSWORD_SECRET=${GRAYLOG_PASSWORD_SECRET}
