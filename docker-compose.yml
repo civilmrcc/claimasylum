@@ -28,6 +28,7 @@ services:
       - CLAIMASYLUM_NOTIFICATION_MAIL=${CLAIMASYLUM_NOTIFICATION_MAIL}
       - DJANGO_DEBUG=${DEBUG}
       - ALLOWED_HOST=${ALLOWED_HOST}
+      - GRAYLOG_HOST=${GRAYLOG_HOST}
     depends_on:
       - graylog
     networks:
