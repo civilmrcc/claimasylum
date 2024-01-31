@@ -112,7 +112,7 @@ export default function SearchAppBar() {
             <HomeOutlinedIcon onClick={callRedirect} />
           </IconButton>
           <Typography variant='h6' noWrap component='div' sx={{ flexGrow: 1 }}>
-          { t('Claimasylum.eu')}
+          { t('claim-asylum.eu')}
           </Typography>
           <FormControl>
             <RadioGroup
