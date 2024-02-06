@@ -104,16 +104,7 @@ def index(request):
     if not matched_polygon:
         logger.error('location_not_in_polygon',formdata)
         raise BadRequest({'error_message':'location_not_in_polygon'})
-    pub_key, _ = pgpy.PGPKey.from_file(str('/code/publickeys/worker.asc'))
-    priv_key, _ = pgpy.PGPKey.from_file(str('/code/privatekeys/server.pgp'))
-   
-    # Encrypt string
-    txt_msg = pgpy.PGPMessage.new(json.dumps(formdata))
-    encrypted_txt_msg = pub_key.encrypt(txt_msg)
-    # from pgpy documentation:
-    # the bitwise OR operator '|' is used to add a signature to a PGPMessage.
-    encrypted_txt_msg |= priv_key.sign(encrypted_txt_msg)
-    print(matched_polygon['polygon']['properties'])
+
     email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
     emails = [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)]
     for value in matched_polygon['polygon']['properties']:
@@ -123,13 +114,17 @@ def index(request):
 
     #final_emails_no_debug = emails
     debug_mails = [getattr(settings, "CLAIMASYLUM_NOTIFICATION_MAIL", None)]
-    #EMAIL_HOST_USER
-    #'Subject',
-    #       'htmlBody',
-    #       'from@email.com',
-    #       [to@email.com],
-    #       [bcc@email.com],
-    #       reply_to=['reply_to@email.com']
+
+    pub_key, _ = pgpy.PGPKey.from_file(str('/code/publickeys/worker.asc'))
+    priv_key, _ = pgpy.PGPKey.from_file(str('/code/privatekeys/server.pgp'))
+    formdata['polygon'] = matched_polygon['polygon']['properties']
+    formdata['authority_mails'] = debug_mails
+    # Encrypt string
+    txt_msg = pgpy.PGPMessage.new(json.dumps(formdata))
+    encrypted_txt_msg = pub_key.encrypt(txt_msg)
+    # from pgpy documentation:
+    # the bitwise OR operator '|' is used to add a signature to a PGPMessage.
+    encrypted_txt_msg |= priv_key.sign(encrypted_txt_msg)
 
     if send_mail(
         'New Request submitted',
