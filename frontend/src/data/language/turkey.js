@@ -30,7 +30,7 @@ const turkish = {
     "ContactValue":"mail: info-claimasylum@systemli.org",
     "Access Data":"Verilere Erişim",
     "AccessDataValue":"Verilerinizi geri almak istiyorsanız, adınızı içeren bir e-posta yazın: Ekibimizin sizinle iletişime geçebilmesi için \n\n 'data-claimasylum@systemli.org'.",
-    "FooterText":"claim-asylum.eu, Sınırların Ötesinde Eşit Haklar Derneği ile işbirliği içinde yürütülen #LeaveNooneBehind kampanyasının bir projesidir. Geliştirilmesi, Prototype Fund çerçevesinde Federal Bakanlık tarafından desteklenmiştir.",
+    "FooterText":"Claim-asylum.eu <1>#LeaveNooneBehind</1> kampanyasının bir projesidir. Geliştirilmesi, <3>prototip fonunun<3> bir parçası olarak Federal Bakanlık tarafından desteklendi.",
     "Code":"Code",
     "access_data":"Verilere Erişim",
     "last_name":"Soyadı",

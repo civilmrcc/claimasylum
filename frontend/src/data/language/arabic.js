@@ -32,7 +32,7 @@ const arabic = {
     "ContactValue":"info-claimasylum@systemli.org البريد الالكتروني: ",
     "Access Data":"استرداد البيانات:",
     "AccessDataValue":" إذا كنت ترغب في استرداد بياناتك ، فاكتب بريدًا إلكترونيًا باسمك الى data-claimasylum@systemli.org حتى يتمكن فريقنا من الاتصال بك.",
-    "FooterText":" كْلَايْم أسَيلُم هو مشروع من حملة \n #LeaveNoOneBehind \n بالتعاون مع جمعية \n Equal Rights Beyond Borders. \n تم دعم التطوير من قبل الوزارة الاتحادية في إطار صندوق النموذج الأولي.",
+    "FooterText":"Claim-asylum.eu هو مشروع تابع لحملة #LeaveNoOneBehind. تم دعم التطوير من قبل الوزارة الاتحادية - في إطار صندوق النموذج الأولي.",
     "Code":"Code",
     "access_data":"ملفك الشخصي: ",
     "last_name":"Surname",

@@ -30,7 +30,7 @@ const english = {
     "ContactValue":"mail: info-claimasylum@systemli.org",
     "Access Data":"Access Data",
     "AccessDataValue":"If you want to retrieve your data, write an email with your name to:\n\n'data-claimasylum@systemli.org'\n\nso that our team can get in touch with you.",
-    "FooterText":"claim-asylum.eu is a project of the #LeaveNoOneBehind campaign in cooperation with the association Equal Rights Beyond Borders. The development was supported by the Federal Ministry for - in the framework of the Prototype Fund.",
+    "FooterText":"Claim-asylum.eu is a project of the <1>#LeaveNoOneBehind</1> campaign. The development was supported by the Federal Ministry for - in the framework of the <3>Prototype Fund</3>.",
     "Code":"Code",
     "access_data":"Access Data",
     "last_name":"Surname",
