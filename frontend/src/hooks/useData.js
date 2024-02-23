@@ -6,9 +6,9 @@ const useData = () => {
   const sendFormData = async (data) => {
     try {
       const response = await axios.post(`${API_URL}/userdata`, {formdata:data});
-      console.log(response.data);
+      return response
     } catch (err) {
-      console.log(err);
+      throw err
     }
   };
 

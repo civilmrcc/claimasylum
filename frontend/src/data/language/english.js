@@ -22,10 +22,10 @@ const english = {
     "Submit": "Submit",
     "Info": "Info",
     "Info Value":"With claim-asylum.eu, asylum seekers have the possibility to express their wish for asylum online to a competent authority.\n\nAccording to EU law, people on the run are allowed to apply for asylum when they first arrive in Europe. Only if this is negative may they be expelled from Europe. The frightening reality, however, is that refugees are repeatedly being illegally and brutally expelled from European border areas, for example from Poland to Belarus or from Greece to Turkey, without first being able to apply for asylum (keyword: illegal push-backs). With the help of our web app, refugees can apply for asylum while still on the run, directly after entering European territory, and thus exercise their right to asylum before they are deported.\n\nAt the same time, their stay on EU territory is documented with the help of a photo (selfie at a prominent location / unique landmark) and the geolocation of the phone. In this way, it is made more difficult for the competent authorities to deny an illegal pushback, so that it can ideally be prevented or the persons concerned at least have a means of proving their stay in the EU.\n\nThe data and photos are uploaded to a secure server once a sufficient connection is established and managed by the claim-asylum.eu team. They can be accessed there by those affected. In addition, we try to arrange further support options in the case of threatened or already completed pushbacks.\n\nWith the button 'Submit wish for asylum', personal data as well as a digitally signed asylum application can be automatically sent directly to a competent authority via online fax or email.\n\nIf the person concerned has the possibility to submit an asylum application directly to an authority, this should be done without fail, as claim-asylum.eu cannot offer absolute legal certainty and the online application may not be recognised. It is possible that the online application will not be recognised.",
-    "FurtherSupportText":"Here you can find support\nIf you have just arrived in a European country:\n'welcome2europe.info'\nIf a pushback has already submitted an asylum application via claim-asylum.eu",
+    "FurtherSupportText":"Here you can find support\n\nIf you have just arrived in a European country: 'welcome2europe.info'\n\nIf a pushback is imminent: call the Alarmphone +334 8651 7161 (http://alarmphone.org/)\n\nIf you have already submitted an asylum application via claimasylum you can access your data here: https://app.claim-asylum.eu/accessdata",
     "list1" : "Eng For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.",
     "Impressum":"Impressum",
-    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nZimmerstr. 11\n\n10969 Berlin\n\nResponsible for content: Ruben Neugebauer",
+    "ImpressumValue":"claim-asylum.eu\n\nc/o Civilfleet-Support e.V.\n\nLausitzer Str. 10\n\n10999 Berlin\n\nResponsible for content: Ruben Neugebauer",
     "Contact":"Contact",
     "ContactValue":"mail: info-claimasylum@systemli.org",
     "Access Data":"Access Data",
@@ -45,7 +45,8 @@ const english = {
     "Signature": "Your signature is necessary if you want to apply for asylum",
     "Send captcha": "Send captcha",
     "Privacy": "Do you agree with the terms & conditions?",
-    "Banner":"This app is only working in Greece"
+    "Statistics": "We will not publish any personal data of you, e.g. your name, email or birthday. We will only save the location, date and outcome/status of your case. Of course, you have the right to decline this by not clicking the checkbox",
+    "Banner":"This app is only working in Greece and Poland"
 }
 
 export default english;

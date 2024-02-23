@@ -14,17 +14,15 @@ Currently we use docker-compose to deploy and develop the application. The repo 
 └── docu/
 ```
 ## Install
-
-
 ```
-git clone git@gitlab.com:Mareikei/claimasylum.git
+git clone git@github.com:civilmrcc/claimasylum.git
 podman-compose --env-file .env up
 ```
 
 
 ### Development
 ```
-git clone git@gitlab.com:Mareikei/claimasylum.git
+git clone git@github.com:civilmrcc/claimasylum.git
 podman-compose --env-file .env up
 ```
 To configure graylog login with admin:admin and add the input for django logging:
