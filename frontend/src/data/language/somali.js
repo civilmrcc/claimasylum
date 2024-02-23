@@ -31,7 +31,7 @@ const french = {
     "ContactValue":"mail: info-claimasylum@systemli.org",
     "Access Data":"Profilekaaga",
     "AccessDataValue":"Hadii aad rabto inaad dib uhesho xogtaada waxaad email uu magacaaga kuqoran yahay kudiri kartaa cinwaankan data-claimasylum@systemli.org si kooxdeena ay kuulasoo xiriiraan.",
-    "FooterText":"claim-asylum.eu waa mashruuca ololaha lamagac bahay #LeaveNoOneBehind oo ah qofna yaan laga tagin mashruucaas oo ay iska kaashanayaan ururka layiraahdo Equal Rights Beyond Borders. \n Horumarintiisa waxaa gacan kagaystey wasaarada federaalka- iyadoo laraacayo nidaamka Sanduuqa Prototype.",
+    "FooterText":"Claim-asylum.eu waa mashruuc ololaha <1>#LeaveNoOneBehind</1>. Horumarinta waxaa taageeray Wasaaradda Federaalka ee - qaab-dhismeedka <3>Sanduuqa Prototype.</3>",
     "Code":"Koodhka",
     "access_data":"Dib uhel Xogta",
     "last_name":"Magaca Qoyska",
