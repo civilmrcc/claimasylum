@@ -154,10 +154,7 @@ export default function UserForm() {
       
       // this api call throw an network error since api does not exist actually right now. This is just to mimic api call process
       let result = await sendFormData(form);
-      console.log(result);
       let confirmation_text = '';
-      console.log(result.data);
-      console.log(result.data.status);
       switch(result.data.status){
         case "no_match_closest_polygon":
           confirmation_text = `Thank you! We could not validate that you are in greece but we sent the asylum request to the closest authority: ${result.data.properties.re_pol_dir}`
@@ -170,6 +167,7 @@ export default function UserForm() {
         }
 
       alert(confirmation_text);
+      window.location.reload()
     }
 
     // const fileName = "output";
